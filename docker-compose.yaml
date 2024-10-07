@@ -1,0 +1,13 @@
+ services:                                                                                                                                                                                                                                    
+   app:                                                                                                                                                                                                                                       
+     build:                                                                                                                                                                                                                                   
+       context: .                                                                                                                                                                                                                         
+       dockerfile: Dockerfile
+     environment:
+       TARGET_BRANCH: "<BRANCH TO PUSH RESULTS. DO NOT USE AN EXISTING BRANCH!!!>"
+       USER_EMAIL: "automation@example.com"
+       USER_NAME: "Default Username" 
+     volumes:
+       - <SSH_FILES_FOLDER>:/root/.ssh/
+       - <PROJECT_PATH>:/root/app_source
+
