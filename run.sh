@@ -7,7 +7,6 @@ git config --global user.name "$USER_NAME"
 cp -r /root/app_source/.[!.]* /app/
 cp -r /root/app_source/* /app/
 
-ls -a
 
 echo "HOST *" > ~/.ssh/config
 echo "StrictHostKeyChecking no" >> ~/.ssh/config
@@ -15,9 +14,9 @@ echo "StrictHostKeyChecking no" >> ~/.ssh/config
 git stash push --include-untracked -m "Stash .gitmodules changes"
 
 if git show-ref --verify --quiet refs/heads/$TARGET_BRANCH; then
-  git switch $TARGET_BRANCH
+  git switch -f $TARGET_BRANCH
 else
-  git checkout -b $TARGET_BRANCH
+  git checkout -f -b $TARGET_BRANCH
 fi
 
 RecurseClone() {
@@ -45,3 +44,4 @@ git rm .gitmodules
 git commit -m "Remove .gitmodules file"
 
 git push -f origin $TARGET_BRANCH
+
